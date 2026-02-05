@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -58,9 +60,10 @@ export default function Login() {
 
         <p style={{ marginTop: 15, textAlign: 'center' }}>
           Don't have an account?{' '}
-          <a href="/register" style={{ color: '#16a34a' }}>
-            Register
-          </a>
+         <Link href="/register" style={{ color: '#16a34a' }}>
+  Register
+</Link>
+
         </p>
       </div>
     </div>
