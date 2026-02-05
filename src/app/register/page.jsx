@@ -58,9 +58,11 @@ export default function Login() {
 
         <p style={{ marginTop: 15, textAlign: 'center' }}>
           Don't have an account?{' '}
-          <a href="/register" style={{ color: '#16a34a' }}>
-            Register
-          </a>
+         import Link from 'next/link'   // <-- ADD THIS AT TOP OF FILE
+        <Link href="/register" style={{ color: '#16a34a' }}>
+  Register
+</Link>
+
         </p>
       </div>
     </div>
