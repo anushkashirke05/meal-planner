@@ -3,8 +3,7 @@
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-
+import Link from 'next/link'   // ✅ Correct place for the import
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -60,11 +59,9 @@ export default function Login() {
 
         <p style={{ marginTop: 15, textAlign: 'center' }}>
           Don't have an account?{' '}
-         <Link href="/register">
-  <button className="btn">Register</button>
-</Link>
-    
-
+          <Link href="/register" style={{ color: '#16a34a' }}>
+            Register
+          </Link>
         </p>
       </div>
     </div>
