@@ -2,87 +2,102 @@
 
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
 export default function Navbar() {
   const router = useRouter()
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
   const logout = async () => {
     await supabase.auth.signOut()
+    setOpen(false)
     router.push('/login')
   }
 
+  // Close menu when route changes
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
   return (
-    <div
-      className="navbar"
+    <nav
       style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
+        width: "100%",
+        background: "#064e3b",
         padding: "12px 20px",
-        flexWrap: "wrap"
+        boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
       }}
     >
-      {/* LEFT — Logo */}
-      <h2 style={{ margin: 0 }}>🍽 Meal Planner</h2>
-
-      {/* MOBILE MENU BUTTON */}
-      <button
-        onClick={() => setOpen(!open)}
-        style={{
-          display: "none",
-          background: "none",
-          border: "none",
-          fontSize: "22px",
-          cursor: "pointer"
-        }}
-        className="menu-btn"
-      >
-        ☰
-      </button>
-
-      {/* NAV LINKS */}
       <div
-        className={`nav-links ${open ? "show" : ""}`}
         style={{
+          maxWidth: "1100px",
+          width: "100%",
+          margin: "auto",
           display: "flex",
-          gap: "18px",
-          alignItems: "center"
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
-        <Link href="/">🏠 Home</Link>
-        <Link href="/dashboard">📚 Dashboard</Link>
-        <Link href="/planner">📅 Planner</Link>
-        <Link href="/add-recipe">➕ Add Recipe</Link>
-        <Link href="/profile">👤 Profile</Link>
-        <button onClick={logout}>Logout</button>
+        {/* LEFT SIDE — LOGO */}
+        <h2 style={{ margin: 0, color: "white" }}>🍽 Meal Planner</h2>
+
+        {/* RIGHT SIDE — HAMBURGER MENU */}
+        <button
+          onClick={() => setOpen(prev => !prev)}
+          style={{
+            background: "none",
+            border: "none",
+            fontSize: "24px",
+            color: "white",
+            cursor: "pointer",
+          }}
+        >
+          ☰
+        </button>
       </div>
 
-      {/* MOBILE STYLES */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .menu-btn {
-            display: block !important;
-          }
+      {/* DROPDOWN MENU */}
+      <div
+        className={open ? "menu show" : "menu"}
+        style={{
+          display: open ? "flex" : "none",
+          position: "absolute",
+          top: "60px",
+          left: 0,
+          width: "100%",
+          background: "white",
+          flexDirection: "column",
+          padding: "15px 20px",
+          boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        }}
+      >
+        <Link href="/" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>🏠 Home</Link>
+        <Link href="/dashboard" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>📚 Dashboard</Link>
+        <Link href="/planner" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>📅 Planner</Link>
+        <Link href="/add-recipe" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>➕ Add Recipe</Link>
+        <Link href="/profile" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>👤 Profile</Link>
 
-          .nav-links {
-            width: 100%;
-            display: none !important;
-            flex-direction: column;
-            background: white;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          }
-
-          .nav-links.show {
-            display: flex !important;
-          }
-        }
-      `}</style>
-    </div>
+        <button
+          onClick={logout}
+          style={{
+            marginTop: 10,
+            background: "#dc2626",
+            color: "white",
+            border: "none",
+            padding: "6px 12px",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontWeight: 600,
+          }}
+        >
+          Logout
+        </button>
+      </div>
+    </nav>
   )
 }
