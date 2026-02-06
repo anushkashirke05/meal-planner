@@ -76,11 +76,10 @@ export default function Navbar() {
           boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
         }}
       >
-        <Link href="/" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>🏠 Home</Link>
-        <Link href="/dashboard" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>📚 Dashboard</Link>
-        <Link href="/planner" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>📅 Planner</Link>
-        <Link href="/add-recipe" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>➕ Add Recipe</Link>
-        <Link href="/profile" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>👤 Profile</Link>
+        <Link href="/" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>Home</Link>
+        <Link href="/dashboard" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>Dashboard</Link>
+        <Link href="/planner" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>Planner</Link>
+        <Link href="/profile" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>Profile</Link>
 
         <button
           onClick={logout}
