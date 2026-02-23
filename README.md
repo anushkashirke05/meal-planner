@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Meal Planner
 
-## Getting Started
+A modern web application that helps users discover recipes, plan meals, and organize weekly meal schedules in a simple and intuitive interface.
+This project is built with Next.js, Supabase, and modern UI components, providing authentication, recipe browsing, and personalized meal planning.
 
-First, run the development server:
+🚀 Features
+🔐 Authentication
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-User registration and login
+-Secure authentication with Supabase
+-Persistent sessions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📊 Dashboard
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+-Browse available recipes
+-Filter by veg and non-veg categories
+-Quick access to recipe details
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🍽 Recipe Management
 
-## Learn More
+-View ingredients and instructions
+-Add recipes to your meal plan
+-Choose date and meal type (Breakfast, Lunch, Dinner)
 
-To learn more about Next.js, take a look at the following resources:
+📅 Meal Planner
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-View meals grouped by date
+-Personalized plans per user
+-Organized weekly overview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+👤 Profile
 
-## Deploy on Vercel
+-View account details
+-Joined date
+-User-specific data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🧭 Navigation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-Responsive navbar
+-Quick access to all main sections
+
+🛠 Tech Stack
+-Frontend
+-Next.js (App Router)
+-React
+-CSS
+
+Backend & Database
+Supabase (Auth + Database)
+
+Deployment
+Vercel
