@@ -39,14 +39,7 @@ export default function Profile() {
               <p><strong>Email:</strong> {user.email}</p>
               <p><strong>Joined:</strong> {new Date(user.created_at).toDateString()}</p>
 
-              <div style={{ marginTop: 20 }}>
-                <button
-                  className="btn"
-                  onClick={() => alert('Profile editing coming soon!')}
-                >
-                  Edit Profile
-                </button>
-              </div>
+
             </div>
           </div>
         )}

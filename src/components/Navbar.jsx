@@ -2,24 +2,15 @@
 
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
-import { useRouter, usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Navbar() {
   const router = useRouter()
-  const pathname = usePathname()
-  const [open, setOpen] = useState(false)
 
   const logout = async () => {
     await supabase.auth.signOut()
-    setOpen(false)
     router.push('/login')
   }
-
-  // Close menu when route changes
-  useEffect(() => {
-    setOpen(false)
-  }, [pathname])
 
   return (
     <nav
@@ -36,66 +27,48 @@ export default function Navbar() {
       <div
         style={{
           maxWidth: "1100px",
-          width: "100%",
           margin: "auto",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
         }}
       >
-        {/* LEFT SIDE — LOGO */}
+        {/* Logo */}
         <h2 style={{ margin: 0, color: "white" }}>🍽 Meal Planner</h2>
 
-        {/* RIGHT SIDE — HAMBURGER MENU */}
-        <button
-          onClick={() => setOpen(prev => !prev)}
-          style={{
-            background: "none",
-            border: "none",
-            fontSize: "24px",
-            color: "white",
-            cursor: "pointer",
-          }}
-        >
-          ☰
-        </button>
-      </div>
+        {/* Links always visible */}
+        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          <Link href="/" style={{ color: "white", textDecoration: "none", fontWeight: 500 }}>
+            Home
+          </Link>
 
-      {/* DROPDOWN MENU */}
-      <div
-        className={open ? "menu show" : "menu"}
-        style={{
-          display: open ? "flex" : "none",
-          position: "absolute",
-          top: "60px",
-          left: 0,
-          width: "100%",
-          background: "white",
-          flexDirection: "column",
-          padding: "15px 20px",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-        }}
-      >
-        <Link href="/" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>Home</Link>
-        <Link href="/dashboard" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>Dashboard</Link>
-        <Link href="/planner" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>Planner</Link>
-        <Link href="/profile" style={{ color: "#064e3b", marginBottom: 8, textDecoration: "none", fontWeight: 600 }}>Profile</Link>
+          <Link href="/dashboard" style={{ color: "white", textDecoration: "none", fontWeight: 500 }}>
+            Dashboard
+          </Link>
 
-        <button
-          onClick={logout}
-          style={{
-            marginTop: 10,
-            background: "#dc2626",
-            color: "white",
-            border: "none",
-            padding: "6px 12px",
-            borderRadius: "8px",
-            cursor: "pointer",
-            fontWeight: 600,
-          }}
-        >
-          Logout
-        </button>
+          <Link href="/planner" style={{ color: "white", textDecoration: "none", fontWeight: 500 }}>
+            Planner
+          </Link>
+
+          <Link href="/profile" style={{ color: "white", textDecoration: "none", fontWeight: 500 }}>
+            Profile
+          </Link>
+
+          <button
+            onClick={logout}
+            style={{
+              background: "#dc2626",
+              color: "white",
+              border: "none",
+              padding: "6px 12px",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontWeight: 600,
+            }}
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </nav>
   )
